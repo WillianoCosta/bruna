@@ -482,9 +482,9 @@ p {
         flex-direction: column;
         width: 100%;
         text-align: center;
-        max-height: 0; /* Esconde o menu por padrão */
-        overflow: hidden;
-        transition: max-height 0.4s ease-out;
+        max-height: 0; /* ESSENCIAL: Esconde o menu por padrão */
+        overflow: hidden; /* ESSENCIAL: Oculta o conteúdo que excede a altura */
+        transition: max-height 0.4s ease-out; /* ESSENCIAL: Animação suave */
         background-color: var(--white);
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         border-radius: 5px;
@@ -492,7 +492,7 @@ p {
     }
 
     .main-nav .nav-list.active {
-        max-height: 300px; /* Altura suficiente para mostrar os itens */
+        max-height: 300px; /* ESSENCIAL: Altura suficiente para mostrar os itens */
         padding: 20px 0; /* Adiciona padding quando ativo */
     }
 
