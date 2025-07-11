@@ -1,0 +1,574 @@
+/* Importação de Fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&family=Montserrat:wght@400;500;700&display=swap');
+
+/* Variáveis CSS para Cores e Fontes */
+:root {
+    --primary-color: #2c3e50; /* Azul escuro - Cor principal profissional */
+    --secondary-color: #3498db; /* Azul claro - Para detalhes e botões */
+    --accent-color: #e67e22; /* Laranja - Um toque de destaque (opcional) */
+    --text-color: #333;
+    --light-text-color: #555;
+    --background-light: #f8f8f8;
+    --background-dark: #eee;
+    --white: #fff;
+    --border-color: #ddd;
+
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Lora', serif;
+
+    --max-width: 1200px;
+}
+
+/* Reset Básico e Estilos Gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block; /* Remove espaço extra abaixo das imagens */
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.bg-light {
+    background-color: var(--background-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+h3 {
+    font-size: 2em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+p {
+    margin-bottom: 15px;
+}
+
+/* Botões */
+.btn {
+    display: inline-block;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-heading);
+    font-weight: 500;
+}
+
+.btn:hover {
+    background-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: var(--secondary-color);
+}
+
+.btn-whatsapp {
+    background-color: #25d366; /* Verde WhatsApp */
+    margin-top: 10px;
+}
+
+.btn-whatsapp:hover {
+    background-color: #128c7e;
+}
+
+
+/* Cabeçalho */
+.main-header {
+    background-color: var(--white);
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    margin: 0;
+}
+
+.logo a {
+    color: var(--primary-color);
+}
+
+.main-nav .nav-list {
+    display: flex;
+    gap: 30px;
+}
+
+.main-nav .nav-list a {
+    color: var(--light-text-color);
+    font-family: var(--font-heading);
+    font-weight: 500;
+    font-size: 1.05em;
+    padding: 5px 0;
+    position: relative;
+}
+
+.main-nav .nav-list a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary-color);
+    transition: width 0.3s ease;
+}
+
+.main-nav .nav-list a:hover::after,
+.main-nav .nav-list a.active::after { /* Adicione a classe 'active' com JS para a seção atual */
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none; /* Escondido por padrão, visível em mobile */
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--primary-color);
+    cursor: pointer;
+}
+
+/* Seção de Destaque (Hero) */
+.hero {
+    background-color: var(--background-light);
+    padding: 100px 0;
+    display: flex;
+    align-items: center;
+    min-height: 70vh;
+    overflow: hidden; /* Garante que a imagem não vaze */
+}
+
+.hero .container {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Permite que os itens quebrem em telas menores */
+}
+
+.hero-content {
+    flex: 2; /* Ocupa mais espaço */
+    max-width: 60%;
+    text-align: left;
+}
+
+.hero-content h2 {
+    font-size: 3.2em;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    text-align: left; /* Alinha o texto à esquerda */
+    color: var(--primary-color);
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    color: var(--light-text-color);
+}
+
+.hero-image {
+    flex: 1; /* Ocupa menos espaço */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 40%;
+}
+
+.hero-image img {
+    border-radius: 50%; /* Imagem redonda */
+    width: 300px; /* Tamanho fixo para a imagem */
+    height: 300px;
+    object-fit: cover; /* Garante que a imagem preencha o círculo */
+    border: 5px solid var(--white); /* Borda branca */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Seção Sobre Mim */
+.about-me {
+    text-align: center;
+}
+
+.about-me p {
+    max-width: 800px;
+    margin: 0 auto 15px auto;
+    font-size: 1.1em;
+    line-height: 1.8;
+}
+
+/* Seção Áreas de Atuação */
+.areas-of-practice {
+    text-align: center;
+}
+
+.area-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas responsivas */
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.area-cards .card {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.area-cards .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.12);
+}
+
+.area-cards .card h4 {
+    color: var(--secondary-color);
+    font-size: 1.5em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.area-cards .card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.area-cards .card li {
+    margin-bottom: 10px;
+    font-size: 1.05em;
+    color: var(--light-text-color);
+    position: relative;
+    padding-left: 25px; /* Espaço para o ícone customizado */
+}
+
+.area-cards .card li:last-child {
+    margin-bottom: 0;
+}
+
+.area-cards .card li::before {
+    content: '✓'; /* Ícone de checkmark */
+    color: var(--accent-color); /* Cor do checkmark */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* Seção de Contato */
+.contact {
+    text-align: center;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.contact-info .info-item {
+    background-color: var(--background-dark);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.contact-info .info-item p {
+    margin-bottom: 10px;
+}
+
+.contact-info .info-item p strong {
+    display: block;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-weight: 500;
+}
+
+/* Ícones de contato - se estiver usando Font Awesome ou similar, adicione estilos */
+.contact-info .info-item [class^="icon-"] { /* Seleciona classes que começam com 'icon-' */
+    margin-right: 8px;
+    color: var(--secondary-color);
+    font-size: 1.2em;
+}
+
+/* Formulário de Contato (se descomentado no HTML) */
+.contact-form {
+    max-width: 600px;
+    margin: 50px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.contact-form input[type="text"],
+.contact-form input[type="email"],
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.contact-form input[type="text"]:focus,
+.contact-form input[type="email"]:focus,
+.contact-form textarea:focus {
+    border-color: var(--secondary-color);
+    outline: none;
+}
+
+.contact-form textarea {
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.contact-form button {
+    width: auto;
+    align-self: flex-start; /* Alinha o botão à esquerda no formulário */
+}
+
+/* Rodapé */
+.main-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 40px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.main-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.main-footer p {
+    margin: 0;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    color: var(--white);
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.social-links a:hover {
+    color: var(--secondary-color);
+    transform: translateY(-2px);
+}
+
+/* Estilos para os ícones (se Font Awesome não for usado, pode estilizar como texto ou remover) */
+/* Se estiver usando Font Awesome, eles terão classes como 'fab fa-instagram' */
+[class^="icon-"] {
+    /* Basicamente para que os placeholders dos ícones não quebrem o layout */
+    display: inline-block;
+    width: 1em; /* Largura padrão */
+    text-align: center;
+}
+
+/* --- Responsividade (Media Queries) --- */
+
+/* Telas menores que 992px (tablets e alguns desktops menores) */
+@media (max-width: 992px) {
+    .hero .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-content, .hero-image {
+        max-width: 100%;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        text-align: center;
+        font-size: 2.8em;
+    }
+
+    .hero-image {
+        order: -1; /* Coloca a imagem acima do texto no mobile */
+        margin-bottom: 30px;
+    }
+}
+
+/* Telas menores que 768px (tablets e smartphones) */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .main-nav {
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    .menu-toggle {
+        display: block; /* Mostra o botão de menu */
+        position: absolute;
+        right: 20px;
+        top: 20px;
+    }
+
+    .main-nav .nav-list {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+        max-height: 0; /* Esconde o menu por padrão */
+        overflow: hidden;
+        transition: max-height 0.4s ease-out;
+        background-color: var(--white);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        border-radius: 5px;
+        padding: 0; /* Remove padding inicial */
+    }
+
+    .main-nav .nav-list.active {
+        max-height: 300px; /* Altura suficiente para mostrar os itens */
+        padding: 20px 0; /* Adiciona padding quando ativo */
+    }
+
+    .main-nav .nav-list li {
+        margin: 10px 0;
+    }
+
+    .main-nav .nav-list a {
+        display: block;
+        padding: 10px 0;
+        font-size: 1.1em;
+    }
+
+    .main-nav .nav-list a::after {
+        display: none; /* Remove a linha de hover em mobile */
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    h2 {
+        font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1.8em;
+    }
+
+    .hero-content h2 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .hero-image img {
+        width: 250px;
+        height: 250px;
+    }
+
+    .area-cards {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .main-footer .container {
+        flex-direction: column;
+    }
+
+    .social-links {
+        margin-top: 20px;
+    }
+}
+
+/* Telas menores que 480px (smartphones menores) */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero-content h2 {
+        font-size: 2em;
+    }
+
+    .hero-image img {
+        width: 200px;
+        height: 200px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+}
