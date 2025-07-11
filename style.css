@@ -492,7 +492,7 @@ p {
     }
 
     .main-nav .nav-list.active {
-        max-height: 300px; /* ESSENCIAL: Altura suficiente para mostrar os itens */
+        max-height: 400px; /* ESSENCIAL: Altura suficiente para mostrar os itens */
         padding: 20px 0; /* Adiciona padding quando ativo */
     }
 
