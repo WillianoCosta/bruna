@@ -1,435 +1,56 @@
-/* Variáveis Premium */
-:root {
-    --primary-color: #0f2027; /* Azul Noite Profundo */
-    --secondary-color: #203a43; /* Azul Petróleo */
-    --gold: #d4af37; /* Dourado Nobre */
-    --gold-hover: #b4932a;
-    --text-dark: #333;
-    --text-light: #666;
-    --white: #ffffff;
-    --bg-light: #f9f9f9;
-    --font-heading: 'Playfair Display', serif; /* Fonte Clássica para Títulos */
-    --font-body: 'Montserrat', sans-serif; /* Fonte Moderna para Texto */
-    --shadow: 0 10px 30px rgba(0,0,0,0.1);
-}
+/* --- CORREÇÃO DE TRANSBORDAMENTO DA IMAGEM --- */
 
-/* Reset e Base */
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-
-body {
-    font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--text-dark);
-    background-color: var(--white);
-    overflow-x: hidden;
-}
-
-h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-color); }
-a { text-decoration: none; transition: 0.3s; }
-ul { list-style: none; }
-img { max-width: 100%; display: block; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-
-/* Botões */
-.btn {
-    display: inline-block;
-    padding: 14px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    border: none;
-}
-
-.btn-primary {
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-    color: var(--white);
-    box-shadow: 0 4px 15px rgba(15, 32, 39, 0.4);
-}
-
-.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(15, 32, 39, 0.6); }
-
-.btn-outline {
-    border: 2px solid var(--primary-color);
-    color: var(--primary-color);
-    margin-left: 10px;
-}
-
-.btn-outline:hover { background: var(--primary-color); color: var(--white); }
-
-/* Header Glassmorphism */
-.main-header {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 20px rgba(0,0,0,0.05);
-}
-
-.main-header .container { display: flex; justify-content: space-between; align-items: center; }
-
-.logo a { font-size: 1.5rem; font-weight: 700; color: var(--primary-color); }
-.logo span { color: var(--gold); }
-
-.nav-list { display: flex; gap: 30px; align-items: center; }
-.nav-list a { color: var(--text-dark); font-weight: 500; font-size: 0.95rem; }
-.nav-list a:hover { color: var(--gold); }
-.nav-btn {
-    border: 2px solid var(--gold);
-    padding: 8px 20px;
-    border-radius: 20px;
-    color: var(--gold) !important;
-}
-.nav-btn:hover { background: var(--gold); color: var(--white) !important; }
-
-/* Hero Section */
-.hero {
-    padding: 120px 0 80px;
-    background: radial-gradient(circle at top right, #f4f7f6, #fff);
-    min-height: 90vh;
-    display: flex;
-    align-items: center;
-}
-
-.hero .container { display: flex; align-items: center; gap: 50px; }
-.hero-content { flex: 1; }
-.hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
-
-.badge {
-    background: rgba(212, 175, 55, 0.1);
-    color: var(--gold);
-    padding: 5px 15px;
-    border-radius: 20px;
-    font-weight: 600;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    display: inline-block;
-    margin-bottom: 20px;
-}
-
-.hero h2 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
-.hero p { font-size: 1.1rem; color: var(--text-light); margin-bottom: 30px; max-width: 500px; }
-
-/* Estilização da Foto */
-.img-wrapper {
-    position: relative;
-    width: 350px;
-    height: 350px;
-}
-
-.img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 50%; /* Círculo perfeito */
-    border: 8px solid var(--white);
-    box-shadow: var(--shadow);
-    z-index: 2;
-    position: relative;
-}
-
-/* Círculo decorativo atrás da foto */
-.img-wrapper::before {
-    content: '';
-    position: absolute;
-    top: -20px; right: -20px; bottom: -20px; left: -20px;
-    border: 2px solid var(--gold);
-    border-radius: 50%;
-    z-index: 1;
-    animation: pulse 3s infinite;
-}
-
-.experience-badge {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    background: var(--white);
-    padding: 10px 20px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    z-index: 3;
-    border-left: 4px solid var(--gold);
-}
-
-.experience-badge i { color: var(--gold); font-size: 1.5rem; }
-.experience-badge span { font-size: 0.8rem; font-weight: 700; line-height: 1.2; color: var(--primary-color); }
-
-/* Seções Gerais */
-.section-padding { padding: 100px 0; }
-.section-title { text-align: center; margin-bottom: 60px; }
-.section-title h3 { font-size: 2.5rem; margin-bottom: 10px; }
-.line { width: 60px; height: 3px; background: var(--gold); margin: 0 auto; }
-.bg-light { background-color: var(--bg-light); }
-
-/* Grid Sobre */
-.about-grid p { margin-bottom: 20px; font-size: 1.05rem; color: var(--text-light); }
-.highlights { margin-top: 30px; display: flex; gap: 20px; flex-wrap: wrap; }
-.highlights li { display: flex; align-items: center; gap: 10px; font-weight: 600; color: var(--primary-color); }
-.highlights i { color: var(--gold); }
-
-/* Cards de Atuação */
-.area-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-.card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-    transition: 0.3s;
-    border-bottom: 3px solid transparent;
-}
-
-.card:hover { transform: translateY(-10px); border-bottom: 3px solid var(--gold); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
-.icon-box {
-    width: 60px; height: 60px;
-    background: rgba(212, 175, 55, 0.1);
-    border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px;
-}
-.icon-box i { color: var(--gold); font-size: 1.5rem; }
-.card h4 { margin-bottom: 15px; font-size: 1.3rem; }
-.card ul li { margin-bottom: 8px; color: var(--text-light); font-size: 0.95rem; position: relative; padding-left: 15px; }
-.card ul li::before { content: '•'; color: var(--gold); position: absolute; left: 0; }
-
-/* Contato */
-.contact-wrapper { display: flex; gap: 50px; align-items: flex-start; }
-.contact-text { flex: 1; }
-.contact-form { flex: 1; display: flex; flex-direction: column; gap: 15px; background: var(--white); padding: 40px; border-radius: 15px; box-shadow: var(--shadow); }
-.contact-form input, .contact-form textarea {
-    padding: 15px; border: 1px solid #ddd; border-radius: 5px; font-family: var(--font-body);
-}
-.contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--gold); }
-
-.info-item { display: flex; align-items: center; gap: 15px; margin-top: 25px; }
-.info-item i { width: 40px; height: 40px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); }
-.info-item a { color: var(--text-dark); font-weight: 500; }
-
-/* Footer */
-.main-footer { background: var(--primary-color); color: rgba(255,255,255,0.7); padding: 40px 0; }
-.footer-content { display: flex; justify-content: space-between; align-items: center; }
-.social-links a { color: var(--white); margin-left: 15px; font-size: 1.2rem; }
-.social-links a:hover { color: var(--gold); }
-
-/* WhatsApp Float */
-.whatsapp-float {
-    position: fixed; bottom: 30px; right: 30px;
-    background: #25d366; color: white;
-    width: 60px; height: 60px; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 30px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    z-index: 2000; animation: float 3s ease-in-out infinite;
-}
-.whatsapp-float:hover { background: #128c7e; transform: scale(1.1); }
-
-/* Animações Keyframes e Classes */
-@keyframes pulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(1.1); opacity: 0; } }
-@keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-10px); } 100% { transform: translateY(0); } }
-
-/* Efeito Reveal (JavaScript Trigger) */
-.reveal-up, .reveal-left, .reveal-right { opacity: 0; transition: all 1s ease; }
-.reveal-up { transform: translateY(50px); }
-.reveal-left { transform: translateX(-50px); }
-.reveal-right { transform: translateX(50px); }
-
-.active-reveal { opacity: 1; transform: translate(0); }
-
-/* Mobile */
-.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; color: var(--primary-color); }
-
-@media (max-width: 992px) {
-    .hero .container { flex-direction: column; text-align: center; }
-    .hero-content h2 { font-size: 2.5rem; }
-    .contact-wrapper { flex-direction: column; }
-    .hero-image { margin-top: 40px; }
-}
-
-@media (max-width: 768px) {
-    .menu-toggle { display: block; }
-    .nav-list {
-        position: absolute; top: 100%; left: 0; width: 100%;
-        background: var(--white); flex-direction: column;
-        padding: 20px; gap: 15px; border-top: 1px solid #eee;
-        display: none; box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .nav-list.active { display: flex; }
-    .hero h2 { font-size: 2.2rem; }
-    .footer-content { flex-direction: column; gap: 15px; }
-}
-
-/* --- CORREÇÃO GLOBAL DE SCROLL HORIZONTAL --- */
+/* 1. Garante que nada no site ultrapasse a largura da tela */
 html, body {
-    overflow-x: hidden; /* Bloqueia rolagem lateral indesejada */
-    width: 100%;
-    position: relative;
+    max-width: 100vw; /* Largura máxima é a janela de visualização */
+    overflow-x: hidden !important; /* Corta impiedosamente o que sobrar */
 }
 
-/* Ajuste das animações para não criar barra de rolagem lateral */
-.reveal-left { transform: translateX(-20px); } 
-.reveal-right { transform: translateX(20px); }
-/* Quando ativo volta para 0 */
-.active-reveal { transform: translateX(0); }
-
-
-/* --- MEDIA QUERIES (Celular e Tablet) --- */
+/* 2. Correção Específica para Mobile */
 @media (max-width: 768px) {
     
-    /* 1. Ajuste Geral de Espaçamento */
-    .section-padding {
-        padding: 50px 0; /* Reduz pela metade o espaçamento entre seções */
-    }
-    
-    .container {
-        padding: 0 20px; /* Garante margem de segurança nas bordas */
+    /* Container da imagem no Hero */
+    .hero-image {
         width: 100%;
-    }
-
-    /* 2. Cabeçalho Compacto */
-    .main-header {
-        padding: 10px 0;
-    }
-    
-    .logo a {
-        font-size: 1.2rem; /* Logo um pouco menor para caber */
-    }
-
-    /* Menu Mobile (Estilo Gaveta/Dropdown Otimizado) */
-    .menu-toggle {
-        display: block;
-        font-size: 1.4rem;
-        cursor: pointer;
-        z-index: 1001;
-    }
-
-    .nav-list {
-        position: fixed; /* Fixa na tela */
-        top: 60px; /* Logo abaixo do header */
-        left: 0;
-        width: 100%;
-        background: var(--white);
-        flex-direction: column;
-        align-items: center;
-        padding: 20px 0;
-        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-        
-        /* Efeito de aparecer suave */
-        opacity: 0;
-        pointer-events: none; /* Não clicável quando invisível */
-        transform: translateY(-20px);
-        transition: all 0.3s ease;
-    }
-
-    .nav-list.active {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
-    }
-    
-    .nav-list li {
-        width: 100%;
-        text-align: center;
-        margin: 10px 0;
-    }
-    
-    .nav-list a {
-        display: block;
-        padding: 10px;
-        font-size: 1.1rem;
-    }
-
-    /* 3. Hero Section (Topo) - Otimizado para 1ª Dobra */
-    .hero {
-        padding: 40px 0 60px; /* Reduz padding superior */
-        min-height: auto; /* Remove altura forçada */
         display: flex;
-        flex-direction: column-reverse; /* Inverte: Texto em cima, Imagem embaixo? Não, padrão é Coluna */
-        /* Na verdade, em mobile geralmente Imagem primeiro ou Texto primeiro. Vamos manter Texto primeiro mas compacto */
+        justify-content: center;
+        /* IMPORTANTE: Isso impede que a animação de "pulso" vaze para fora da tela */
+        overflow: hidden; 
+        padding: 20px 0; /* Espaço para a animação não ser cortada bruscamente */
     }
 
-    .hero .container {
-        flex-direction: column;
-        gap: 30px;
-        text-align: center;
-    }
-
-    .hero-content h2 {
-        font-size: 2.2rem; /* Fonte menor para não quebrar feio */
-        margin-bottom: 15px;
-    }
-
-    .hero-content p {
-        font-size: 1rem;
-        line-height: 1.5;
-        margin-bottom: 25px;
-    }
-
-    .hero-buttons {
-        display: flex;
-        flex-direction: column; /* Botões um embaixo do outro no celular */
-        gap: 15px;
-        padding: 0 40px; /* Margem lateral para os botões não ficarem gigantes */
-    }
-
-    .btn-outline {
-        margin-left: 0; /* Remove margem lateral do desktop */
-    }
-
-    /* Imagem Hero Compacta */
+    /* O Wrapper (a caixa redonda da foto) */
     .img-wrapper {
-        width: 260px; /* Tamanho fixo menor */
-        height: 260px;
-        margin: 0 auto; /* Centraliza */
+        /* MUDANÇA: De pixels fixos para porcentagem fluida */
+        width: 65vw; /* Ocupa 65% da largura da tela do celular */
+        max-width: 280px; /* Trava num tamanho máximo para não ficar gigante */
+        height: auto; /* Altura automática */
+        aspect-ratio: 1 / 1; /* FORÇA ser um quadrado perfeito (círculo) */
+        margin: 0 auto;
     }
 
-    .experience-badge {
-        bottom: 10px;
-        right: -10px; /* Ajuste fino */
-        left: auto; /* Remove left do desktop */
-        padding: 8px 15px;
-    }
-
-    /* 4. Cards de Atuação */
-    .area-cards {
-        grid-template-columns: 1fr; /* Uma coluna só */
-        gap: 20px;
-    }
-
-    .card {
-        padding: 30px 20px; /* Menos padding interno */
-    }
-
-    /* 5. Contato */
-    .contact-wrapper {
-        flex-direction: column;
-        gap: 40px;
-    }
-
-    .contact-form, .contact-text {
+    /* A Imagem em si */
+    .img-wrapper img {
         width: 100%;
-        padding: 25px; /* Cards de contato mais compactos */
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Ajuste da Animação do Círculo Pulsante */
+    /* Reduzimos o tamanho do aro para ele não sair da tela */
+    .img-wrapper::before {
+        top: -10px; 
+        right: -10px; 
+        bottom: -10px; 
+        left: -10px;
     }
     
-    /* Ajuste do botão do WhatsApp Flutuante para não cobrir conteúdo */
-    .whatsapp-float {
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        bottom: 20px;
-        right: 20px;
+    /* Ajuste do selo de experiência para não vazar na direita */
+    .experience-badge {
+        right: -5%; /* Puxa um pouco para dentro */
+        bottom: 0;
+        font-size: 0.7rem; /* Texto menor */
+        padding: 5px 10px;
+        white-space: nowrap; /* Impede quebra de linha feia */
     }
-}
-
-/* Telas muito pequenas (iPhone SE, etc) */
-@media (max-width: 380px) {
-    .hero-content h2 { font-size: 1.8rem; }
-    .img-wrapper { width: 220px; height: 220px; }
-    .btn { width: 100%; padding: 12px 0; } /* Botões largura total */
-    .hero-buttons { padding: 0; }
 }
