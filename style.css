@@ -263,3 +263,173 @@ img { max-width: 100%; display: block; }
     .hero h2 { font-size: 2.2rem; }
     .footer-content { flex-direction: column; gap: 15px; }
 }
+
+/* --- CORREÇÃO GLOBAL DE SCROLL HORIZONTAL --- */
+html, body {
+    overflow-x: hidden; /* Bloqueia rolagem lateral indesejada */
+    width: 100%;
+    position: relative;
+}
+
+/* Ajuste das animações para não criar barra de rolagem lateral */
+.reveal-left { transform: translateX(-20px); } 
+.reveal-right { transform: translateX(20px); }
+/* Quando ativo volta para 0 */
+.active-reveal { transform: translateX(0); }
+
+
+/* --- MEDIA QUERIES (Celular e Tablet) --- */
+@media (max-width: 768px) {
+    
+    /* 1. Ajuste Geral de Espaçamento */
+    .section-padding {
+        padding: 50px 0; /* Reduz pela metade o espaçamento entre seções */
+    }
+    
+    .container {
+        padding: 0 20px; /* Garante margem de segurança nas bordas */
+        width: 100%;
+    }
+
+    /* 2. Cabeçalho Compacto */
+    .main-header {
+        padding: 10px 0;
+    }
+    
+    .logo a {
+        font-size: 1.2rem; /* Logo um pouco menor para caber */
+    }
+
+    /* Menu Mobile (Estilo Gaveta/Dropdown Otimizado) */
+    .menu-toggle {
+        display: block;
+        font-size: 1.4rem;
+        cursor: pointer;
+        z-index: 1001;
+    }
+
+    .nav-list {
+        position: fixed; /* Fixa na tela */
+        top: 60px; /* Logo abaixo do header */
+        left: 0;
+        width: 100%;
+        background: var(--white);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+        
+        /* Efeito de aparecer suave */
+        opacity: 0;
+        pointer-events: none; /* Não clicável quando invisível */
+        transform: translateY(-20px);
+        transition: all 0.3s ease;
+    }
+
+    .nav-list.active {
+        opacity: 1;
+        pointer-events: auto;
+        transform: translateY(0);
+    }
+    
+    .nav-list li {
+        width: 100%;
+        text-align: center;
+        margin: 10px 0;
+    }
+    
+    .nav-list a {
+        display: block;
+        padding: 10px;
+        font-size: 1.1rem;
+    }
+
+    /* 3. Hero Section (Topo) - Otimizado para 1ª Dobra */
+    .hero {
+        padding: 40px 0 60px; /* Reduz padding superior */
+        min-height: auto; /* Remove altura forçada */
+        display: flex;
+        flex-direction: column-reverse; /* Inverte: Texto em cima, Imagem embaixo? Não, padrão é Coluna */
+        /* Na verdade, em mobile geralmente Imagem primeiro ou Texto primeiro. Vamos manter Texto primeiro mas compacto */
+    }
+
+    .hero .container {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2rem; /* Fonte menor para não quebrar feio */
+        margin-bottom: 15px;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 25px;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column; /* Botões um embaixo do outro no celular */
+        gap: 15px;
+        padding: 0 40px; /* Margem lateral para os botões não ficarem gigantes */
+    }
+
+    .btn-outline {
+        margin-left: 0; /* Remove margem lateral do desktop */
+    }
+
+    /* Imagem Hero Compacta */
+    .img-wrapper {
+        width: 260px; /* Tamanho fixo menor */
+        height: 260px;
+        margin: 0 auto; /* Centraliza */
+    }
+
+    .experience-badge {
+        bottom: 10px;
+        right: -10px; /* Ajuste fino */
+        left: auto; /* Remove left do desktop */
+        padding: 8px 15px;
+    }
+
+    /* 4. Cards de Atuação */
+    .area-cards {
+        grid-template-columns: 1fr; /* Uma coluna só */
+        gap: 20px;
+    }
+
+    .card {
+        padding: 30px 20px; /* Menos padding interno */
+    }
+
+    /* 5. Contato */
+    .contact-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .contact-form, .contact-text {
+        width: 100%;
+        padding: 25px; /* Cards de contato mais compactos */
+    }
+    
+    /* Ajuste do botão do WhatsApp Flutuante para não cobrir conteúdo */
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
+
+/* Telas muito pequenas (iPhone SE, etc) */
+@media (max-width: 380px) {
+    .hero-content h2 { font-size: 1.8rem; }
+    .img-wrapper { width: 220px; height: 220px; }
+    .btn { width: 100%; padding: 12px 0; } /* Botões largura total */
+    .hero-buttons { padding: 0; }
+}
