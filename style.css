@@ -1,56 +1,208 @@
-/* --- CORREÇÃO DE TRANSBORDAMENTO DA IMAGEM --- */
-
-/* 1. Garante que nada no site ultrapasse a largura da tela */
-html, body {
-    max-width: 100vw; /* Largura máxima é a janela de visualização */
-    overflow-x: hidden !important; /* Corta impiedosamente o que sobrar */
+/* --- Variáveis e Configurações Gerais --- */
+:root {
+    --primary-color: #0f172a; /* Azul Marinho Profundo */
+    --accent-color: #c5a059;  /* Dourado Elegante */
+    --accent-light: #eaddcf;  /* Bege Suave */
+    --text-dark: #333333;
+    --text-light: #666666;
+    --white: #ffffff;
+    --bg-light: #f9f9fb;
+    
+    --font-heading: 'Playfair Display', serif; /* Fonte Clássica para Títulos */
+    --font-body: 'Lato', sans-serif; /* Fonte Moderna para Texto */
+    
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+    --shadow-md: 0 10px 30px rgba(0,0,0,0.08);
+    --radius: 8px;
 }
 
-/* 2. Correção Específica para Mobile */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--font-body);
+    color: var(--text-dark);
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* --- Tipografia --- */
+h1, h2, h3, h4 { font-family: var(--font-heading); color: var(--primary-color); font-weight: 700; }
+a { text-decoration: none; transition: 0.3s; }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+.section-padding { padding: 100px 0; }
+.bg-light { background-color: var(--bg-light); }
+.highlight { color: var(--accent-color); font-style: italic; }
+
+/* --- Botões --- */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 14px 30px; border-radius: 50px; font-weight: 700; text-transform: uppercase;
+    font-size: 0.9rem; letter-spacing: 1px; cursor: pointer;
+}
+.btn-primary { background: var(--primary-color); color: var(--white); border: 2px solid var(--primary-color); }
+.btn-primary:hover { background: var(--accent-color); border-color: var(--accent-color); transform: translateY(-3px); }
+
+.btn-outline { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); }
+.btn-outline:hover { background: var(--primary-color); color: var(--white); transform: translateY(-3px); }
+
+.btn-whatsapp-full { background: #25D366; color: white; width: 100%; border-radius: var(--radius); font-size: 1.1rem; }
+.btn-whatsapp-full:hover { background: #1ebc57; }
+
+/* --- Header & Nav --- */
+.main-header {
+    position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-sm); padding: 15px 0; transition: 0.3s;
+}
+.header-container { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-size: 1.8rem; color: var(--primary-color); }
+.logo .dot { color: var(--accent-color); font-size: 2.5rem; line-height: 0; }
+.logo a { color: inherit; }
+
+.nav-list { display: flex; gap: 30px; list-style: none; align-items: center; }
+.nav-list a { color: var(--text-dark); font-weight: 600; font-size: 0.95rem; position: relative; }
+.nav-list a:hover { color: var(--accent-color); }
+.nav-cta {
+    padding: 10px 20px; border: 1px solid var(--primary-color); border-radius: 4px; color: var(--primary-color) !important;
+}
+.nav-cta:hover { background: var(--primary-color); color: white !important; }
+
+/* Menu Mobile */
+.menu-toggle { display: none; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--primary-color); }
+
+/* --- Hero Section --- */
+.hero {
+    padding: 160px 0 100px 0; background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+    min-height: 100vh; display: flex; align-items: center; position: relative;
+}
+.hero-container { display: flex; align-items: center; gap: 50px; }
+.hero-content { flex: 1; }
+.hero-content .subtitle { 
+    display: inline-block; background: var(--accent-light); color: var(--primary-color); 
+    padding: 5px 15px; border-radius: 20px; font-weight: 700; font-size: 0.85rem; margin-bottom: 20px; text-transform: uppercase;
+}
+.hero-content h2 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; }
+.hero-content p { font-size: 1.15rem; color: var(--text-light); margin-bottom: 30px; max-width: 500px; }
+.hero-btns { display: flex; gap: 15px; }
+
+/* Imagem Hero Estilizada */
+.hero-image { flex: 1; display: flex; justify-content: center; position: relative; }
+.image-wrapper { position: relative; width: 380px; height: 480px; }
+.image-wrapper img {
+    width: 100%; height: 100%; object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 20px 20px 0px var(--accent-color); /* Efeito de borda deslocada */
+    z-index: 2; position: relative;
+}
+.experience-badge {
+    position: absolute; bottom: -20px; left: -20px;
+    background: var(--white); padding: 15px 25px; border-radius: 10px;
+    box-shadow: var(--shadow-md); z-index: 3; display: flex; align-items: center; gap: 10px;
+    border-left: 5px solid var(--primary-color);
+}
+.experience-badge .number { font-size: 2.5rem; font-weight: 700; color: var(--accent-color); font-family: var(--font-heading); }
+.experience-badge .text { font-size: 0.9rem; font-weight: 700; line-height: 1.2; color: var(--primary-color); }
+
+/* --- Sobre --- */
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-header h3 { font-size: 2.5rem; margin-bottom: 10px; }
+.section-header .line { width: 60px; height: 3px; background: var(--accent-color); margin: 0 auto; }
+.about-content { display: flex; align-items: center; gap: 50px; }
+.about-text { flex: 1.5; }
+.about-text p { margin-bottom: 20px; font-size: 1.1rem; }
+.about-list { list-style: none; margin-top: 20px; }
+.about-list li { display: flex; align-items: center; gap: 10px; font-weight: 700; margin-bottom: 10px; color: var(--primary-color); }
+.about-list i { color: var(--accent-color); }
+
+.about-stats { flex: 1; display: grid; grid-template-columns: 1fr; gap: 20px; }
+.stat-card {
+    background: var(--white); padding: 30px; border-radius: var(--radius);
+    box-shadow: var(--shadow-sm); border: 1px solid #eee; text-align: center; transition: 0.3s;
+}
+.stat-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--accent-color); }
+.stat-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 15px; }
+
+/* --- Áreas de Atuação (Cards) --- */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.service-card {
+    background: var(--white); padding: 40px 30px; border-radius: var(--radius);
+    box-shadow: var(--shadow-sm); transition: 0.4s; position: relative; overflow: hidden;
+}
+.service-card::before {
+    content: ''; position: absolute; top: 0; left: 0; width: 4px; height: 0;
+    background: var(--accent-color); transition: 0.4s;
+}
+.service-card:hover { transform: translateY(-10px); box-shadow: var(--shadow-md); }
+.service-card:hover::before { height: 100%; }
+
+.service-card .icon-box {
+    width: 60px; height: 60px; background: var(--primary-color); color: var(--accent-color);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 25px;
+}
+.service-card h4 { font-size: 1.5rem; margin-bottom: 15px; }
+.service-card ul { list-style: none; margin-top: 20px; border-top: 1px solid #eee; padding-top: 20px; }
+.service-card ul li { font-size: 0.95rem; color: var(--text-light); margin-bottom: 8px; position: relative; padding-left: 15px; }
+.service-card ul li::before { content: '•'; color: var(--accent-color); position: absolute; left: 0; font-weight: bold; }
+
+/* --- Contato --- */
+.contact-wrapper { display: flex; flex-wrap: wrap; background: var(--white); box-shadow: var(--shadow-md); border-radius: 20px; overflow: hidden; }
+.contact-text { flex: 2; padding: 60px; }
+.contact-details { margin-top: 40px; display: grid; gap: 30px; }
+.detail-item { display: flex; align-items: center; gap: 20px; }
+.detail-item i { width: 50px; height: 50px; background: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--primary-color); font-size: 1.2rem; }
+.detail-item strong { display: block; color: var(--primary-color); font-size: 1.1rem; }
+
+.contact-action { flex: 1; background: var(--primary-color); padding: 60px; display: flex; align-items: center; color: var(--white); }
+.card-action h4 { color: var(--white); margin-bottom: 15px; }
+.card-action p { margin-bottom: 30px; opacity: 0.8; }
+
+/* --- Footer --- */
+.main-footer { background: #0a0f1c; color: #aaa; padding: 60px 0 20px; text-align: center; }
+.footer-logo h2 { color: var(--white); font-size: 2rem; margin-bottom: 10px; }
+.footer-logo span { color: var(--accent-color); }
+.footer-social { margin: 30px 0; display: flex; justify-content: center; gap: 20px; }
+.footer-social a { width: 40px; height: 40px; border: 1px solid #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); }
+.footer-social a:hover { background: var(--accent-color); border-color: var(--accent-color); transform: rotate(360deg); }
+.footer-bottom { border-top: 1px solid #222; padding-top: 20px; font-size: 0.85rem; }
+
+/* --- Botão WhatsApp Flutuante --- */
+.whatsapp-float {
+    position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px;
+    background-color: #25d366; color: #FFF; border-radius: 50px; text-align: center; font-size: 30px;
+    box-shadow: 2px 2px 3px #999; z-index: 1000; display: flex; align-items: center; justify-content: center;
+    transition: 0.3s;
+}
+.whatsapp-float:hover { transform: scale(1.1); background-color: #1ebc57; }
+
+/* --- Responsividade --- */
+@media (max-width: 992px) {
+    .hero-container { flex-direction: column; text-align: center; padding-top: 50px; }
+    .hero-content p { margin: 0 auto 30px; }
+    .hero-btns { justify-content: center; }
+    .about-content { flex-direction: column; }
+    .contact-wrapper { flex-direction: column; }
+    .image-wrapper { width: 300px; height: 380px; margin-top: 40px; }
+}
+
 @media (max-width: 768px) {
-    
-    /* Container da imagem no Hero */
-    .hero-image {
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        /* IMPORTANTE: Isso impede que a animação de "pulso" vaze para fora da tela */
-        overflow: hidden; 
-        padding: 20px 0; /* Espaço para a animação não ser cortada bruscamente */
+    .menu-toggle { display: block; }
+    .nav-list {
+        position: absolute; top: 100%; left: 0; width: 100%; background: var(--white);
+        flex-direction: column; padding: 20px; box-shadow: var(--shadow-sm);
+        display: none; /* Escondido por padrão */
     }
-
-    /* O Wrapper (a caixa redonda da foto) */
-    .img-wrapper {
-        /* MUDANÇA: De pixels fixos para porcentagem fluida */
-        width: 65vw; /* Ocupa 65% da largura da tela do celular */
-        max-width: 280px; /* Trava num tamanho máximo para não ficar gigante */
-        height: auto; /* Altura automática */
-        aspect-ratio: 1 / 1; /* FORÇA ser um quadrado perfeito (círculo) */
-        margin: 0 auto;
-    }
-
-    /* A Imagem em si */
-    .img-wrapper img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-    }
-
-    /* Ajuste da Animação do Círculo Pulsante */
-    /* Reduzimos o tamanho do aro para ele não sair da tela */
-    .img-wrapper::before {
-        top: -10px; 
-        right: -10px; 
-        bottom: -10px; 
-        left: -10px;
-    }
-    
-    /* Ajuste do selo de experiência para não vazar na direita */
-    .experience-badge {
-        right: -5%; /* Puxa um pouco para dentro */
-        bottom: 0;
-        font-size: 0.7rem; /* Texto menor */
-        padding: 5px 10px;
-        white-space: nowrap; /* Impede quebra de linha feia */
-    }
+    .nav-list.active { display: flex; }
+    .hero-content h2 { font-size: 2.5rem; }
+    .contact-text, .contact-action { padding: 40px 20px; }
 }
+
+/* --- Animações (Scroll Reveal) --- */
+.reveal-up, .reveal-left, .reveal-right { opacity: 0; transition: all 1s ease-out; }
+.reveal-up { transform: translateY(50px); }
+.reveal-left { transform: translateX(-50px); }
+.reveal-right { transform: translateX(50px); }
+
+.reveal-up.active { opacity: 1; transform: translateY(0); }
+.reveal-left.active { opacity: 1; transform: translateX(0); }
+.reveal-right.active { opacity: 1; transform: translateX(0); }
